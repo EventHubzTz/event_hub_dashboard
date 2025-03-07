@@ -49,6 +49,13 @@ export const deleteEventPackageUrl = `${eventHubServiceUrl}/api/v1/delete/event/
 //PAYMENT URLs
 export const getAllPaymentTransactionsUrl = `${eventHubServiceUrl}/api/v1/get/payment/transaction`
 
+//REGIONS MANAGEMENT URLs
+export const createRegionUrl = `${eventHubServiceUrl}/api/v1/add/region`
+export const getAllRegionsUrl = `${eventHubServiceUrl}/api/v1/get/all/regions`
+export const getAllRegionsByPaginationUrl = `${eventHubServiceUrl}/api/v1/get/all/regions/by/pagination`
+export const updateRegionUrl = `${eventHubServiceUrl}/api/v1/update/region`
+export const deleteRegionUrl = `${eventHubServiceUrl}/api/v1/delete/region`
+
 //DEKANIA MANAGEMENT URLs
 export const createDekaniaUrl = `${eventHubServiceUrl}/api/v1/add/dekania`
 export const getAllDekaniaUrl = `${eventHubServiceUrl}/api/v1/get/all/dekania`

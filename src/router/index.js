@@ -9,6 +9,7 @@ import Profile from "../pages/Profile/Profile";
 import Settings from "../pages/Settings/Settings";
 import Categories from "../pages/Categories/Categories";
 import Dekania from "../pages/Dekania/Dekania";
+import Regions from "../pages/Regions/Regions";
 
 export const router = createBrowserRouter([
     {
@@ -31,6 +32,10 @@ export const router = createBrowserRouter([
     {
         path: "users",
         element: <Users />,
+    },
+    {
+        path: "regions",
+        element: <Regions />,
     },
     {
         path: "dekania",

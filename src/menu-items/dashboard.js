@@ -67,6 +67,15 @@ const dashboard = {
       roles: ["SUPER_ADMIN"]
     },
     {
+      id: 'regions',
+      title: 'Regions',
+      type: 'item',
+      url: '/regions',
+      icon: icons.HeatMapOutlined,
+      breadcrumbs: false,
+      roles: ["SUPER_ADMIN"]
+    },
+    {
       id: 'dekania',
       title: 'Dekania',
       type: 'item',
