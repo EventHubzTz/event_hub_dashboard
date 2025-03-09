@@ -1,9 +1,11 @@
 // assets
-import { DashboardOutlined, FieldTimeOutlined, HeatMapOutlined, MoneyCollectOutlined, SettingOutlined, TableOutlined, UsergroupAddOutlined, UserOutlined, WalletOutlined } from '@ant-design/icons';
+import { AimOutlined, DashboardOutlined, DollarOutlined, FieldTimeOutlined, HeatMapOutlined, MoneyCollectOutlined, SettingOutlined, TableOutlined, UsergroupAddOutlined, UserOutlined, WalletOutlined } from '@ant-design/icons';
 
 // icons
 const icons = {
+  AimOutlined,
   DashboardOutlined,
+  DollarOutlined,
   FieldTimeOutlined,
   HeatMapOutlined,
   MoneyCollectOutlined,
@@ -58,6 +60,15 @@ const dashboard = {
       roles: ["EVENT_PLANNER", "SUPER_ADMIN"]
     },
     {
+      id: 'contributions',
+      title: 'Contributions',
+      type: 'item',
+      url: '/contributions',
+      icon: icons.DollarOutlined,
+      breadcrumbs: false,
+      roles: ["EVENT_PLANNER", "SUPER_ADMIN"]
+    },
+    {
       id: 'users',
       title: 'Users',
       type: 'item',
@@ -71,7 +82,7 @@ const dashboard = {
       title: 'Regions',
       type: 'item',
       url: '/regions',
-      icon: icons.HeatMapOutlined,
+      icon: icons.AimOutlined,
       breadcrumbs: false,
       roles: ["SUPER_ADMIN"]
     },

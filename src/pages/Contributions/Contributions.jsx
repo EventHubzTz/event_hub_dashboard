@@ -11,7 +11,7 @@ import { CustomSearch } from "../../components/custom-search";
 import { paymentHeadCells } from "../../seed/table-headers";
 import { paymentStatus } from "../../utils/constant";
 import { authPostRequest } from "../../services/api-service";
-import { getAllPaymentTransactionsUrl } from "../../seed/url";
+import { getAllContributionTransactionsUrl } from "../../seed/url";
 import Layout from "../../layouts/Layout";
 import { MaterialUICustomTabs } from "../../components/MaterialUICustomTabs";
 import { formatDateForExcel } from "../../utils/date-formatter";
@@ -49,11 +49,11 @@ export const handleExport = (data) => {
         utils.sheet_add_aoa(ws, [headings]);
         utils.sheet_add_json(ws, data, { origin: "A2", skipHeader: true });
         utils.book_append_sheet(wb, ws, "Orders");
-        writeFile(wb, `Pugu Marathon Payments ${dayjs().format("YYYY-MM-DD HH:mm:ss")}.xlsx`);
+        writeFile(wb, `Pugu Marathon Contributions ${dayjs().format("YYYY-MM-DD HH:mm:ss")}.xlsx`);
     }
 };
 
-function Payments() {
+function Contributions() {
     const [exportExcel, setExportExcel] = React.useState(false);
     const [currentTab, setCurrentTab] = React.useState("");
     const [rowsPerPage, setRowsPerPage] = React.useState(10);
@@ -80,7 +80,7 @@ function Payments() {
     const getDataForExportExcel = () => {
         setExportExcel(true);
         authPostRequest(
-            getAllPaymentTransactionsUrl,
+            getAllContributionTransactionsUrl,
             {
                 query: searchTerm,
                 status: currentTab,
@@ -102,7 +102,7 @@ function Payments() {
         (page) => {
             setIsLoading(true);
             authPostRequest(
-                getAllPaymentTransactionsUrl,
+                getAllContributionTransactionsUrl,
                 {
                     query: searchTerm,
                     status: currentTab,
@@ -167,7 +167,7 @@ function Payments() {
                     <Stack spacing={3}>
                         <Stack direction="row" justifyContent="space-between" spacing={4}>
                             <Stack spacing={1}>
-                                <Typography variant="h4">Payments</Typography>
+                                <Typography variant="h4">Contributions</Typography>
                             </Stack>
                         </Stack>
                         <MaterialUICustomTabs
@@ -209,4 +209,4 @@ function Payments() {
     );
 }
 
-export default Payments;
+export default Contributions;

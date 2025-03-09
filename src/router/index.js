@@ -10,6 +10,7 @@ import Settings from "../pages/Settings/Settings";
 import Categories from "../pages/Categories/Categories";
 import Dekania from "../pages/Dekania/Dekania";
 import Regions from "../pages/Regions/Regions";
+import Contributions from "../pages/Contributions/Contributions";
 
 export const router = createBrowserRouter([
     {
@@ -28,6 +29,10 @@ export const router = createBrowserRouter([
     {
         path: "payments",
         element: <Payments />,
+    },
+    {
+        path: "contributions",
+        element: <Contributions />,
     },
     {
         path: "users",
