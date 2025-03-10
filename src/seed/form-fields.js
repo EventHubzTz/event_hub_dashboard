@@ -54,6 +54,10 @@ export const eventPackagesFormFields = [
     { name: "amount", type: "number", label: "Amount", notRequired: false, minimumCharacters: 3 },
 ]
 
-export const dekaniaFormFields = [
+export const regionFormFields = [
     { name: "region_name", type: "text", label: "Region Name", notRequired: false, minimumCharacters: 3 },
+]
+
+export const dekaniaFormFields = [
+    { name: "dekania_name", type: "text", label: "Dekania Name", notRequired: false, minimumCharacters: 3 },
 ]

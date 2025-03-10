@@ -21,7 +21,7 @@ import {
 } from "../../seed/url";
 import { CustomAlert } from "../../components/custom-alert";
 import { FormDialog } from "../../components/form-dialog";
-import { dekaniaFormFields } from "../../seed/form-fields";
+import { regionFormFields } from "../../seed/form-fields";
 import Layout from "../../layouts/Layout";
 import { DeleteOutlined, EditOutlined, PlusOutlined } from "@ant-design/icons";
 
@@ -214,7 +214,7 @@ function Regions() {
                     handleClose={handleCloseCreateDialog}
                     dialogTitle={"Region"}
                     action={action}
-                    fields={dekaniaFormFields}
+                    fields={regionFormFields}
                     values={values}
                     url={
                         action === CREATE ? createRegionUrl : updateRegionUrl
