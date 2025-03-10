@@ -8,7 +8,7 @@ import {
 import { useSelection } from "../../hooks/use-selection";
 import { CustomTable } from "../../components/custom-table";
 import { CustomSearch } from "../../components/custom-search";
-import { paymentHeadCells } from "../../seed/table-headers";
+import { contributionHeadCells } from "../../seed/table-headers";
 import { paymentStatus } from "../../utils/constant";
 import { authPostRequest } from "../../services/api-service";
 import { getAllContributionTransactionsUrl } from "../../seed/url";
@@ -198,7 +198,7 @@ function Contributions() {
                             }
                             rowsPerPage={rowsPerPage}
                             selected={paymentsSelection.selected}
-                            headCells={paymentHeadCells}
+                            headCells={contributionHeadCells}
                             popoverItems={contentPopoverItems}
                             isLoading={isLoading}
                         />

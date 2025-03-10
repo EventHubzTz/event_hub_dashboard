@@ -163,7 +163,7 @@ export const paymentHeadCells = [
         label: 'Payment Number',
     },
     {
-        id: 'age',
+        id: 'date_of_birth',
         label: 'Age',
     },
     {
@@ -177,6 +177,29 @@ export const paymentHeadCells = [
     {
         id: 't_shirt_size',
         label: 'T Shirt Size',
+    },
+    {
+        id: 'amount',
+        label: 'Amount',
+    },
+    {
+        id: 'payment_status',
+        label: 'Payment Status',
+    },
+    {
+        id: 'placed_at',
+        label: 'Date',
+    },
+]
+
+export const contributionHeadCells = [
+    {
+        id: 'phone_number',
+        label: 'Payment Number',
+    },
+    {
+        id: 'region',
+        label: 'Region',
     },
     {
         id: 'amount',
