@@ -69,6 +69,15 @@ const dashboard = {
       roles: ["EVENT_PLANNER", "SUPER_ADMIN"]
     },
     {
+      id: 'accounting',
+      title: 'Accounting',
+      type: 'item',
+      url: '/accounting',
+      icon: icons.TableOutlined,
+      breadcrumbs: false,
+      roles: ["EVENT_PLANNER", "SUPER_ADMIN"]
+    },
+    {
       id: 'users',
       title: 'Users',
       type: 'item',

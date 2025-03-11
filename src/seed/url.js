@@ -49,6 +49,7 @@ export const deleteEventPackageUrl = `${eventHubServiceUrl}/api/v1/delete/event/
 //PAYMENT URLs
 export const getAllPaymentTransactionsUrl = `${eventHubServiceUrl}/api/v1/get/payment/transaction`
 export const getAllContributionTransactionsUrl = `${eventHubServiceUrl}/api/v1/get/contribution/transactions`
+export const getAllAccountingTransactionsUrl = `${eventHubServiceUrl}/api/v1/get/all/accounting/transactions`
 
 //REGIONS MANAGEMENT URLs
 export const createRegionUrl = `${eventHubServiceUrl}/api/v1/add/region`

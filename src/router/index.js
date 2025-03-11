@@ -11,6 +11,7 @@ import Categories from "../pages/Categories/Categories";
 import Dekania from "../pages/Dekania/Dekania";
 import Regions from "../pages/Regions/Regions";
 import Contributions from "../pages/Contributions/Contributions";
+import Accounting from "../pages/accounting/Accounting";
 
 export const router = createBrowserRouter([
     {
@@ -33,6 +34,10 @@ export const router = createBrowserRouter([
     {
         path: "contributions",
         element: <Contributions />,
+    },
+    {
+        path: "accounting",
+        element: <Accounting />,
     },
     {
         path: "users",

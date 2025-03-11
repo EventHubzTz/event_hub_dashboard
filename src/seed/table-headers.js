@@ -215,6 +215,41 @@ export const contributionHeadCells = [
     },
 ]
 
+export const accountingHeadCells = [
+    {
+        id: 'phone_number',
+        label: 'Payment Number',
+    },
+    {
+        id: 'region',
+        label: 'Region',
+    },
+    {
+        id: 'amount',
+        label: 'Amount',
+    },
+    {
+        id: 'credit',
+        label: 'Credit',
+    },
+    {
+        id: 'debit',
+        label: 'Debit',
+    },
+    {
+        id: 'balance',
+        label: 'Balance',
+    },
+    {
+        id: 'payment_status',
+        label: 'Payment Status',
+    },
+    {
+        id: 'created_date',
+        label: 'Date',
+    },
+]
+
 export const regionHeadCells = [
     {
         id: 'id',
