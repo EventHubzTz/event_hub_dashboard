@@ -17,8 +17,8 @@ function AuthWrapper({ children }) {
                 }}
             >
                 <Grid display="flex" alignItems="center" item xs={12} sx={{ ml: 3, mt: 3 }}>
-                    <Avatar alt='logo' src='/assets/images/logo.png' />
-                    <Typography variant='h3' sx={{ ml: 2 }}>Event Hub</Typography>
+                    <Avatar alt='logo' src='/assets/images/logo.jpeg' />
+                    <Typography variant='h3' sx={{ ml: 2 }}>Pugu Marathon</Typography>
                 </Grid>
                 <Grid item xs={12}>
                     <Grid
