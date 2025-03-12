@@ -18,7 +18,7 @@ function AdminOverview() {
         total_amount: 0
     });
     const [body, setBody] = React.useState({
-        "from": dayjs().startOf('day'),
+        "from": dayjs().startOf("year"),
         "to": dayjs(),
     });
 
