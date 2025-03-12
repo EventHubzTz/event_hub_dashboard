@@ -233,13 +233,13 @@ export const CustomTable = (props) => {
                           } else if (column.id === 'placed_at') {
                             return (
                               <TableCell key={index}>
-                                {formatDate(row.created_at)}
+                                {formatDate(row.created_date)}
                               </TableCell>
                             )
-                          } else if (column.id === 'amount') {
+                          } else if (column.id === 'amount' || column.id === 'debit' || column.id === 'credit' || column.id === 'balance') {
                             return (
                               <TableCell key={index}>
-                                {formatMoney(row.amount)}
+                                {formatMoney(row[column.id])}
                               </TableCell>
                             )
                           } else if (column.id === 'actions') {

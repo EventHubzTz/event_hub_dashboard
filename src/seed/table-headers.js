@@ -151,11 +151,7 @@ export const eventPackagesHeadCells = [
 
 export const paymentHeadCells = [
     {
-        id: 'event_name',
-        label: 'Event Name',
-    },
-    {
-        id: 'ticket_owner',
+        id: 'full_name',
         label: 'Full Name',
     },
     {
@@ -187,12 +183,16 @@ export const paymentHeadCells = [
         label: 'Payment Status',
     },
     {
-        id: 'placed_at',
+        id: 'created_at',
         label: 'Date',
     },
 ]
 
 export const contributionHeadCells = [
+    {
+        id: 'full_name',
+        label: 'Full Name',
+    },
     {
         id: 'phone_number',
         label: 'Payment Number',
@@ -210,19 +210,27 @@ export const contributionHeadCells = [
         label: 'Payment Status',
     },
     {
-        id: 'placed_at',
+        id: 'created_at',
         label: 'Date',
     },
 ]
 
 export const accountingHeadCells = [
     {
+        id: 'full_name',
+        label: 'Full Name',
+    },
+    {
         id: 'phone_number',
-        label: 'Payment Number',
+        label: 'Phone Number',
     },
     {
         id: 'region',
         label: 'Region',
+    },
+    {
+        id: 'provider',
+        label: 'Channel',
     },
     {
         id: 'amount',
@@ -241,11 +249,7 @@ export const accountingHeadCells = [
         label: 'Balance',
     },
     {
-        id: 'payment_status',
-        label: 'Payment Status',
-    },
-    {
-        id: 'created_date',
+        id: 'placed_at',
         label: 'Date',
     },
 ]
