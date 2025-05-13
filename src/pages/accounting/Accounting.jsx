@@ -25,7 +25,7 @@ export const handleExport = (data) => {
         const newData = data.map((row, index) => {
             const newRow = {
                 "S/No": index + 1,
-                "Full Name": row?.ticket_owner,
+                "Full Name": row?.full_name,
                 "Payment Number": row?.phone_number,
                 "Channel": row?.provider,
                 "Amount": row?.amount,
