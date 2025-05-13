@@ -186,28 +186,10 @@ export const CustomTable = (props) => {
                                 }
                               </TableCell>
                             )
-                          } else if (column.id === 'order_status' || column.id === 'product_status') {
+                          } else if (column.id === 'location') {
                             return (
                               <TableCell key={index}>
-                                <Chip
-                                  color={row.status === "COMPLETED" ||
-                                    (row.order_status === "DELIVERED" && column.id === 'order_status') ||
-                                    (row.order_status === "CONFIRMED" && column.id === 'order_status') ||
-                                    row.status === "AVAILABLE" ? "success" : "error"
-                                  }
-                                  label={row.order_status && column.id === 'order_status' && row.order_status === "NEEDTOCALLAGAIN" ?
-                                    "NEED TO CALL AGAIN" :
-                                    row.order_status && column.id === 'order_status' && row.order_status === "RECEIVED" ?
-                                      "PENDING" :
-                                      row.order_status && column.id === 'order_status' ?
-                                        row.order_status :
-                                        row.status
-                                  }
-                                  sx={{
-                                    width: 110,
-                                    color: 'black',
-                                  }}
-                                />
+                                {row.region} {row.location && row.location}
                               </TableCell>
                             )
                           } else if (column.id === 'payment_status') {

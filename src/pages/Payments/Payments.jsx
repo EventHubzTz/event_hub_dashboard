@@ -12,9 +12,7 @@ import { paymentHeadCells } from "../../seed/table-headers";
 import { paymentStatus } from "../../utils/constant";
 import { authPostRequest } from "../../services/api-service";
 import { getAllPaymentTransactionsUrl } from "../../seed/url";
-import Layout from "../../layouts/Layout";
 import { MaterialUICustomTabs } from "../../components/MaterialUICustomTabs";
-import { formatDateForExcel } from "../../utils/date-formatter";
 import { utils, writeFile } from "xlsx";
 import dayjs from "dayjs";
 
@@ -30,15 +28,15 @@ export const handleExport = (data) => {
             const newRow = {
                 "S/No": index + 1,
                 "Event Name": row?.event_name,
-                "Full Name": row?.ticket_owner,
+                "Full Name": row?.full_name,
                 "Payment Number": row?.phone_number,
                 "Age": row?.age,
                 "Distance": row?.distance,
-                "Location": row?.location,
+                "Location": `${row?.location} ${row?.location}`,
                 "T Shirt Size": row?.t_shirt_size,
                 "Amount": row?.amount,
                 "Payment Status": row?.payment_status,
-                "Date": formatDateForExcel(row?.created_at),
+                "Date": row?.created_at,
             };
             return newRow;
         });
@@ -154,7 +152,7 @@ function Payments() {
     const contentPopoverItems = [];
 
     return (
-        <Layout>
+        <>
             <Box
                 component="main"
                 sx={{
@@ -205,7 +203,7 @@ function Payments() {
                     </Stack>
                 </Container>
             </Box>
-        </Layout>
+        </>
     );
 }
 

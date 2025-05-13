@@ -22,7 +22,6 @@ import {
 import { CustomAlert } from "../../components/custom-alert";
 import { FormDialog } from "../../components/form-dialog";
 import { dekaniaFormFields } from "../../seed/form-fields";
-import Layout from "../../layouts/Layout";
 import { DeleteOutlined, EditOutlined, PlusOutlined } from "@ant-design/icons";
 
 const useContentsIds = (administrators) => {
@@ -199,7 +198,7 @@ function Dekania() {
     ];
 
     return (
-        <Layout>
+        <>
             {openAlert && (
                 <CustomAlert
                     openAlert={openAlert}
@@ -285,7 +284,7 @@ function Dekania() {
                     </Stack>
                 </Container>
             </Box>
-        </Layout>
+        </>
     );
 }
 

@@ -22,7 +22,6 @@ import {
 import { CustomAlert } from "../../components/custom-alert";
 import { FormDialog } from "../../components/form-dialog";
 import { categoriesFormFields } from "../../seed/form-fields";
-import Layout from "../../layouts/Layout";
 import { DeleteOutlined, EditOutlined, EyeOutlined, PlusOutlined } from "@ant-design/icons";
 import ViewCategory from "./ViewCategory";
 
@@ -221,7 +220,7 @@ function Categories() {
   ];
 
   return (
-    <Layout>
+    <>
       {openAlert && (
         <CustomAlert
           openAlert={openAlert}
@@ -314,7 +313,7 @@ function Categories() {
           </Stack>
         </Container>
       </Box>
-    </Layout>
+    </>
   );
 }
 

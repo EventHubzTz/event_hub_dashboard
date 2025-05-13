@@ -11,8 +11,6 @@ import { CustomSearch } from "../../components/custom-search";
 import { accountingHeadCells } from "../../seed/table-headers";
 import { authGetRequest } from "../../services/api-service";
 import { getAllAccountingTransactionsUrl } from "../../seed/url";
-import Layout from "../../layouts/Layout";
-import { formatDateForExcel } from "../../utils/date-formatter";
 import { utils, writeFile } from "xlsx";
 import dayjs from "dayjs";
 
@@ -27,16 +25,11 @@ export const handleExport = (data) => {
         const newData = data.map((row, index) => {
             const newRow = {
                 "S/No": index + 1,
-                "Event Name": row?.event_name,
                 "Full Name": row?.ticket_owner,
                 "Payment Number": row?.phone_number,
-                "Age": row?.age,
-                "Distance": row?.distance,
-                "Location": row?.location,
-                "T Shirt Size": row?.t_shirt_size,
                 "Amount": row?.amount,
                 "Payment Status": row?.payment_status,
-                "Date": formatDateForExcel(row?.created_at),
+                "Date": row?.created_at,
             };
             return newRow;
         });
@@ -132,7 +125,7 @@ function Accounting() {
     const contentPopoverItems = [];
 
     return (
-        <Layout>
+        <>
             <Box
                 component="main"
                 sx={{
@@ -174,7 +167,7 @@ function Accounting() {
                     </Stack>
                 </Container>
             </Box>
-        </Layout>
+        </>
     );
 }
 

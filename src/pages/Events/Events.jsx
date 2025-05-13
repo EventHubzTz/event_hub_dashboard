@@ -24,7 +24,6 @@ import {
 import { CustomAlert } from "../../components/custom-alert";
 import { FormDialog } from "../../components/form-dialog";
 import { eventFormFields } from "../../seed/form-fields";
-import Layout from "../../layouts/Layout";
 import { CameraOutlined, DeleteOutlined, EditOutlined, WalletOutlined, PlusOutlined } from "@ant-design/icons";
 import { useSelector } from "react-redux";
 import { formatDate } from "../../utils/date-formatter";
@@ -321,7 +320,7 @@ function Events() {
     ];
 
     return (
-        <Layout>
+        <>
             {openAlert && (
                 <CustomAlert
                     openAlert={openAlert}
@@ -421,7 +420,7 @@ function Events() {
                     </Stack>
                 </Container>
             </Box>
-        </Layout>
+        </>
     );
 }
 

@@ -22,7 +22,6 @@ import {
 import { CustomAlert } from "../../components/custom-alert";
 import { FormDialog } from "../../components/form-dialog";
 import { userFormFields } from "../../seed/form-fields";
-import Layout from "../../layouts/Layout";
 import { DeleteOutlined, PlusOutlined } from "@ant-design/icons";
 import { MaterialUICustomTabs } from "../../components/MaterialUICustomTabs";
 
@@ -221,7 +220,7 @@ function Users() {
     ];
 
     return (
-        <Layout>
+        <>
             {openAlert && (
                 <CustomAlert
                     openAlert={openAlert}
@@ -312,7 +311,7 @@ function Users() {
                     </Stack>
                 </Container>
             </Box>
-        </Layout>
+        </>
     );
 }
 

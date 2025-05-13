@@ -2,7 +2,6 @@ import React from 'react'
 import { Avatar, Box, Container, IconButton, Table, TableBody, TableCell, TableContainer, TableRow, Typography } from '@mui/material'
 import { useAuth } from '../../hooks/use-auth'
 import ChangePassword from '../../components/ChangePassword'
-import Layout from '../../layouts/Layout'
 import { EditOutlined } from '@ant-design/icons'
 import { removeUnderscore } from '../../utils/constant'
 import { eventHubServiceUrl } from '../../seed/url'
@@ -16,7 +15,7 @@ function Profile() {
     }
 
     return (
-        <Layout>
+        <>
             <Container>
                 <Box
                     sx={{
@@ -145,7 +144,7 @@ function Profile() {
                     </Table>
                 </TableContainer>
             </Container>
-        </Layout>
+        </>
     )
 }
 

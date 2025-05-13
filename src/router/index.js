@@ -12,56 +12,57 @@ import Dekania from "../pages/Dekania/Dekania";
 import Regions from "../pages/Regions/Regions";
 import Contributions from "../pages/Contributions/Contributions";
 import Accounting from "../pages/accounting/Accounting";
+import Layout from "../layouts/Layout";
 
 export const router = createBrowserRouter([
     {
         path: "/",
-        element: <Dashboard />,
-        errorElement: <Dashboard />,
+        element: <Layout><Dashboard /></Layout>,
+        errorElement: <Layout><Dashboard /></Layout>,
     },
     {
         path: "categories",
-        element: <Categories />,
+        element: <Layout><Categories /></Layout>,
     },
     {
         path: "events",
-        element: <Events />,
+        element: <Layout><Events /></Layout>,
     },
     {
         path: "payments",
-        element: <Payments />,
+        element: <Layout><Payments /></Layout>,
     },
     {
         path: "contributions",
-        element: <Contributions />,
+        element: <Layout><Contributions /></Layout>,
     },
     {
         path: "accounting",
-        element: <Accounting />,
+        element: <Layout><Accounting /></Layout>,
     },
     {
         path: "users",
-        element: <Users />,
+        element: <Layout><Users /></Layout>,
     },
     {
         path: "regions",
-        element: <Regions />,
+        element: <Layout><Regions /></Layout>,
     },
     {
         path: "dekania",
-        element: <Dekania />,
+        element: <Layout><Dekania /></Layout>,
     },
     {
         path: "wallet",
-        element: <Wallet />,
+        element: <Layout><Wallet /></Layout>,
     },
     {
         path: "profile",
-        element: <Profile />,
+        element: <Layout><Profile /></Layout>,
     },
     {
         path: "settings",
-        element: <Settings />,
+        element: <Layout><Settings /></Layout>,
     },
     {
         path: "login",
