@@ -27,8 +27,11 @@ export const handleExport = (data) => {
                 "S/No": index + 1,
                 "Full Name": row?.ticket_owner,
                 "Payment Number": row?.phone_number,
+                "Channel": row?.provider,
                 "Amount": row?.amount,
-                "Payment Status": row?.payment_status,
+                "Credit": row?.credit,
+                "Debit": row?.debit,
+                "Balance": row?.balance,
                 "Date": row?.created_at,
             };
             return newRow;
