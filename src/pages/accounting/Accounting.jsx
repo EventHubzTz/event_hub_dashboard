@@ -161,7 +161,7 @@ function Accounting() {
                                         color: "neutral.100",
                                     }}
                                 >
-                                    Request Payment
+                                    Request Settlement
                                 </Button>
                             </div>
                         </Stack>
