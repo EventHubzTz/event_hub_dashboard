@@ -8,9 +8,6 @@ export const CustomSearch = ({
   handleSearch,
   exportExcel,
   getDataForExportExcel,
-  selectedItems,
-  confirmSelectedOrderStatus,
-  statusOfOrder,
 }) => {
   const popOver = usePopover();
 

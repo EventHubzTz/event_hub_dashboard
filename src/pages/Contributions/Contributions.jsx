@@ -173,7 +173,6 @@ function Contributions() {
                             handleSearch={handleSearch}
                             exportExcel={exportExcel}
                             getDataForExportExcel={getDataForExportExcel}
-                            selectedItems={paymentsSelection}
                         />
                         <CustomTable
                             order={order}

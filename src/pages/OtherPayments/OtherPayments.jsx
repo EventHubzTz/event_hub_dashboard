@@ -20,6 +20,8 @@ import {
 import { FormDialog } from "../../components/form-dialog";
 import { otherPaymentsFormFields } from "../../seed/form-fields";
 import { PlusOutlined } from "@ant-design/icons";
+import { utils, writeFile } from "xlsx";
+import dayjs from "dayjs";
 
 const useContentsIds = (administrators) => {
     return React.useMemo(() => {
@@ -27,7 +29,35 @@ const useContentsIds = (administrators) => {
     }, [administrators]);
 };
 
+export const handleExport = (data) => {
+    if (data.length > 0) {
+        const newData = data.map((row, index) => {
+            const newRow = {
+                "S/No": index + 1,
+                "Full Name": row?.full_name,
+                "Payment Number": row?.phone_number,
+                "Age": row?.age,
+                "Distance": row?.distance,
+                "Location": `${row?.region_name} ${row?.location}`,
+                "T Shirt Size": row?.t_shirt_size,
+                "Amount": row?.amount,
+                "Date": row?.created_at,
+            };
+            return newRow;
+        });
+        data = newData;
+        let headings = Object.keys(data[0]);
+        const wb = utils.book_new();
+        const ws = utils.json_to_sheet([]);
+        utils.sheet_add_aoa(ws, [headings]);
+        utils.sheet_add_json(ws, data, { origin: "A2", skipHeader: true });
+        utils.book_append_sheet(wb, ws, "Orders");
+        writeFile(wb, `Pugu Marathon Payments ${dayjs().format("YYYY-MM-DD HH:mm:ss")}.xlsx`);
+    }
+};
+
 function OtherPayments() {
+    const [exportExcel, setExportExcel] = React.useState(false);
     const [action, setAction] = React.useState(CREATE);
     const [rowsPerPage, setRowsPerPage] = React.useState(10);
     const [administrators, setAdministrators] = React.useState({
@@ -62,6 +92,26 @@ function OtherPayments() {
         const isAsc = orderBy === property && order === 'asc';
         setOrder(isAsc ? 'desc' : 'asc');
         setOrderBy(property);
+    };
+
+    const getDataForExportExcel = () => {
+        setExportExcel(true);
+        authPostRequest(
+            getAllOtherPaymentsByPaginationUrl,
+            {
+                query: searchTerm,
+                sort: orderBy + " " + order,
+                limit: administrators.total_results,
+                page: 1,
+            },
+            (data) => {
+                handleExport(data?.results);
+                setExportExcel(false);
+            },
+            (error) => {
+                setExportExcel(false);
+            }
+        );
     };
 
     const fetcher = React.useCallback(
@@ -172,7 +222,11 @@ function OtherPayments() {
                                 </Button>
                             </div>
                         </Stack>
-                        <CustomSearch handleSearch={handleSearch} />
+                        <CustomSearch
+                            handleSearch={handleSearch}
+                            exportExcel={exportExcel}
+                            getDataForExportExcel={getDataForExportExcel}
+                        />
                         <CustomTable
                             order={order}
                             orderBy={orderBy}

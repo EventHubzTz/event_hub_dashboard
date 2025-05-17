@@ -18,6 +18,7 @@
     "dayjs": "^1.11.10",
     "formik": "^2.4.5",
     "mui-color-input": "^2.0.3",
+    "mui-one-time-password-input": "^5.0.0",
     "react": "^18.2.0",
     "react-device-detect": "^2.2.3",
     "react-dom": "^18.2.0",

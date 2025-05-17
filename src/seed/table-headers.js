@@ -289,6 +289,29 @@ export const accountingHeadCells = [
     },
 ]
 
+export const settlementsHeadCells = [
+    {
+        id: 'full_name',
+        label: 'Full Name',
+    },
+    {
+        id: 'account_number',
+        label: 'Account Number',
+    },
+    {
+        id: 'bank_name',
+        label: 'Bank Name',
+    },
+    {
+        id: 'amount',
+        label: 'Amount',
+    },
+    {
+        id: 'placed_at',
+        label: 'Date',
+    },
+]
+
 export const regionHeadCells = [
     {
         id: 'id',

@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import {
     Box,
     Button,
@@ -9,17 +9,18 @@ import {
 import { useSelection } from "../../hooks/use-selection";
 import { CustomTable } from "../../components/custom-table";
 import { CustomSearch } from "../../components/custom-search";
-import { accountingHeadCells } from "../../seed/table-headers";
-import { authGetRequest } from "../../services/api-service";
-import { getAllAccountingTransactionsUrl } from "../../seed/url";
+import { accountingHeadCells, settlementsHeadCells } from "../../seed/table-headers";
+import { authGetRequest, authPostRequest } from "../../services/api-service";
+import { getAllAccountingTransactionsUrl, getAllPaymentRequestsByPaginationUrl } from "../../seed/url";
 import { utils, writeFile } from "xlsx";
 import dayjs from "dayjs";
 import { MaterialUICustomTabs } from "../../components/MaterialUICustomTabs";
 import { PlusOutlined } from "@ant-design/icons";
+import RequestSettlementModal from "../../components/RequestSettlementModal";
 
 const TABS = [
     { label: "Accounting", value: "Accounting" },
-    { label: "Payment Requests", value: "Payment Requests" }
+    { label: "Payment Settlements", value: "Payment Settlements" }
 ];
 const usePaymentsIds = (payments) => {
     return React.useMemo(() => {
@@ -59,13 +60,15 @@ function Accounting() {
     const [exportExcel, setExportExcel] = React.useState(false);
     const [rowsPerPage, setRowsPerPage] = React.useState(10);
     const [payments, setPayments] = React.useState([]);
+    const [settlements, setSettlements] = React.useState([]);
     const [, setSelectedData] = React.useState({});
-    const [, setSearchTerm] = React.useState("");
+    const [searchTerm, setSearchTerm] = React.useState("");
     const [isLoading, setIsLoading] = React.useState(true);
     const paymentsIds = usePaymentsIds(payments);
     const paymentsSelection = useSelection(paymentsIds);
     const [order, setOrder] = React.useState('desc');
     const [orderBy, setOrderBy] = React.useState('id');
+    const [openSettlementModal, setOpenSettlementModal] = useState(false);
 
     const handleRequestSort = (event, property) => {
         const isAsc = orderBy === property && order === 'asc';
@@ -79,6 +82,27 @@ function Accounting() {
             getAllAccountingTransactionsUrl,
             (data) => {
                 handleExport(data);
+                setExportExcel(false);
+            },
+            (error) => {
+                setExportExcel(false);
+            }
+        );
+    };
+
+    const getSettlementsDataForExportExcel = () => {
+        setExportExcel(true);
+        authPostRequest(
+            getAllPaymentRequestsByPaginationUrl,
+            {
+                query: searchTerm,
+                status: currentTab,
+                sort: orderBy + " " + order,
+                limit: settlements.total_results,
+                page: 1,
+            },
+            (data) => {
+                handleExport(data?.results);
                 setExportExcel(false);
             },
             (error) => {
@@ -110,6 +134,33 @@ function Accounting() {
         []
     );
 
+    const getSettlements = React.useCallback(
+        (page) => {
+            setIsLoading(true);
+            authPostRequest(
+                getAllPaymentRequestsByPaginationUrl,
+                {
+                    query: searchTerm,
+                    sort: orderBy + " " + order,
+                    limit: rowsPerPage,
+                    page: page,
+                },
+                (data) => {
+                    setSettlements(data);
+                    setIsLoading(false);
+                },
+                (error) => {
+                    setSettlements({
+                        page: 1,
+                        total_results: 0,
+                        total_pages: 0,
+                        results: [],
+                    });
+                    setIsLoading(false);
+                }
+            );
+        }, [order, orderBy, rowsPerPage, searchTerm]);
+
     const handleSearch = (event) => {
         setSearchTerm(event.target.value);
     };
@@ -117,6 +168,10 @@ function Accounting() {
     React.useEffect(() => {
         fetcher(1);
     }, [fetcher]);
+
+    React.useEffect(() => {
+        getSettlements(1);
+    }, [getSettlements]);
 
     const handlePageChange = React.useCallback(
         (event, value) => {
@@ -137,6 +192,16 @@ function Accounting() {
 
     return (
         <>
+            {openSettlementModal &&
+                <RequestSettlementModal
+                    open={openSettlementModal}
+                    onClose={() => setOpenSettlementModal(false)}
+                    getSettlements={getSettlements}
+                    switchTab={() => {
+                        setCurrentTab(TABS[1].value);
+                    }}
+                />
+            }
             <Box
                 component="main"
                 sx={{
@@ -160,6 +225,7 @@ function Accounting() {
                                     sx={{
                                         color: "neutral.100",
                                     }}
+                                    onClick={() => setOpenSettlementModal(true)}
                                 >
                                     Request Settlement
                                 </Button>
@@ -170,29 +236,58 @@ function Accounting() {
                             setActiveTab={setCurrentTab}
                             tabsData={TABS}
                         />
-                        <CustomSearch
-                            handleSearch={handleSearch}
-                            exportExcel={exportExcel}
-                            getDataForExportExcel={getDataForExportExcel}
-                            selectedItems={paymentsSelection}
-                        />
-                        <CustomTable
-                            order={order}
-                            orderBy={orderBy}
-                            onRequestSort={handleRequestSort}
-                            count={payments.length}
-                            items={payments}
-                            onPageChange={handlePageChange}
-                            onRowsPerPageChange={handleRowsPerPageChange}
-                            onSelectOne={paymentsSelection.handleSelectOne}
-                            onSelect={onSelect}
-                            page={1}
-                            rowsPerPage={rowsPerPage}
-                            selected={paymentsSelection.selected}
-                            headCells={accountingHeadCells}
-                            popoverItems={contentPopoverItems}
-                            isLoading={isLoading}
-                        />
+                        {currentTab === TABS[0].value &&
+                            <>
+                                <CustomSearch
+                                    handleSearch={handleSearch}
+                                    exportExcel={exportExcel}
+                                    getDataForExportExcel={getDataForExportExcel}
+                                />
+                                <CustomTable
+                                    order={order}
+                                    orderBy={orderBy}
+                                    onRequestSort={handleRequestSort}
+                                    count={payments.length}
+                                    items={payments}
+                                    onPageChange={handlePageChange}
+                                    onRowsPerPageChange={handleRowsPerPageChange}
+                                    onSelectOne={paymentsSelection.handleSelectOne}
+                                    onSelect={onSelect}
+                                    page={1}
+                                    rowsPerPage={rowsPerPage}
+                                    selected={paymentsSelection.selected}
+                                    headCells={accountingHeadCells}
+                                    popoverItems={contentPopoverItems}
+                                    isLoading={isLoading}
+                                />
+                            </>
+                        }
+                        {currentTab === TABS[1].value &&
+                            <>
+                                <CustomSearch
+                                    handleSearch={handleSearch}
+                                    exportExcel={exportExcel}
+                                    getDataForExportExcel={getSettlementsDataForExportExcel}
+                                />
+                                <CustomTable
+                                    order={order}
+                                    orderBy={orderBy}
+                                    onRequestSort={handleRequestSort}
+                                    count={settlements.results.length}
+                                    items={settlements.results}
+                                    onPageChange={handlePageChange}
+                                    onRowsPerPageChange={handleRowsPerPageChange}
+                                    onSelectOne={paymentsSelection.handleSelectOne}
+                                    onSelect={onSelect}
+                                    page={1}
+                                    rowsPerPage={rowsPerPage}
+                                    selected={paymentsSelection.selected}
+                                    headCells={settlementsHeadCells}
+                                    popoverItems={contentPopoverItems}
+                                    isLoading={isLoading}
+                                />
+                            </>
+                        }
                     </Stack>
                 </Container>
             </Box>

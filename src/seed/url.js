@@ -51,7 +51,9 @@ export const getAllPaymentTransactionsUrl = `${eventHubServiceUrl}/api/v1/get/pa
 export const getAllContributionTransactionsUrl = `${eventHubServiceUrl}/api/v1/get/contribution/transactions`
 export const getAllAccountingTransactionsUrl = `${eventHubServiceUrl}/api/v1/get/all/accounting/transactions`
 export const addPaymentRequestUrl = `${eventHubServiceUrl}/api/v1/add/payment/request`
-export const getAllPaymentRequestsUrl = `${eventHubServiceUrl}/api/v1/get/payment/requests/by/pagination`
+export const getAllPaymentRequestsByPaginationUrl = `${eventHubServiceUrl}/api/v1/get/payment/requests/by/pagination`
+export const requestOTPUrl = `${eventHubServiceUrl}/api/v1/resend/otp`
+export const verifyOTPUrl = `${eventHubServiceUrl}/api/v1/verify/phone`
 
 //REGIONS MANAGEMENT URLs
 export const createRegionUrl = `${eventHubServiceUrl}/api/v1/add/region`

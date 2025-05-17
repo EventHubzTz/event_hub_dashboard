@@ -32,7 +32,7 @@ export const handleExport = (data) => {
                 "Payment Number": row?.phone_number,
                 "Age": row?.age,
                 "Distance": row?.distance,
-                "Location": `${row?.location} ${row?.location}`,
+                "Location": `${row?.region} ${row?.location}`,
                 "T Shirt Size": row?.t_shirt_size,
                 "Amount": row?.amount,
                 "Payment Status": row?.payment_status,
@@ -177,7 +177,6 @@ function Payments() {
                             handleSearch={handleSearch}
                             exportExcel={exportExcel}
                             getDataForExportExcel={getDataForExportExcel}
-                            selectedItems={paymentsSelection}
                         />
                         <CustomTable
                             order={order}
