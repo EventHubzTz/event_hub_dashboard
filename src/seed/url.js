@@ -50,6 +50,8 @@ export const deleteEventPackageUrl = `${eventHubServiceUrl}/api/v1/delete/event/
 export const getAllPaymentTransactionsUrl = `${eventHubServiceUrl}/api/v1/get/payment/transaction`
 export const getAllContributionTransactionsUrl = `${eventHubServiceUrl}/api/v1/get/contribution/transactions`
 export const getAllAccountingTransactionsUrl = `${eventHubServiceUrl}/api/v1/get/all/accounting/transactions`
+export const addPaymentRequestUrl = `${eventHubServiceUrl}/api/v1/add/payment/request`
+export const getAllPaymentRequestsUrl = `${eventHubServiceUrl}/api/v1/get/payment/requests/by/pagination`
 
 //REGIONS MANAGEMENT URLs
 export const createRegionUrl = `${eventHubServiceUrl}/api/v1/add/region`
@@ -64,3 +66,8 @@ export const getAllDekaniaUrl = `${eventHubServiceUrl}/api/v1/get/all/dekania`
 export const getAllDekaniaByPaginationUrl = `${eventHubServiceUrl}/api/v1/get/all/dekania/by/pagination`
 export const updateDekaniaUrl = `${eventHubServiceUrl}/api/v1/update/dekania`
 export const deleteDekaniaUrl = `${eventHubServiceUrl}/api/v1/delete/dekania`
+
+//OTHER PAYMENTS URLs
+export const addOtherPaymentUrl = `${eventHubServiceUrl}/api/v1/add/other/payment`
+export const getAllOtherPaymentsByPaginationUrl = `${eventHubServiceUrl}/api/v1/get/other/payment/by/pagination`
+export const updateOtherPaymentUrl = `${eventHubServiceUrl}/api/v1/update/other/payment`

@@ -6,6 +6,7 @@ export const UPDATE = "Update";
 export const userRoles = [
     { label: "All", value: "" },
     { label: "Normal Users", value: "NORMAL_USER" },
+    { label: "Accountant", value: "ACCOUNTANT" },
     { label: "Event Planners", value: "EVENT_PLANNER" },
     { label: "Super Admins", value: "SUPER_ADMIN" }
 ]

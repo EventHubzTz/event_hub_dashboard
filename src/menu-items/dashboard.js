@@ -30,7 +30,7 @@ const dashboard = {
       url: '/',
       icon: icons.DashboardOutlined,
       breadcrumbs: false,
-      roles: ["EVENT_PLANNER", "SUPER_ADMIN"]
+      roles: ["ACCOUNTANT", "EVENT_PLANNER", "SUPER_ADMIN"]
     },
     {
       id: 'categories',
@@ -48,7 +48,7 @@ const dashboard = {
       url: '/events',
       icon: icons.FieldTimeOutlined,
       breadcrumbs: false,
-      roles: ["EVENT_PLANNER", "SUPER_ADMIN"]
+      roles: ["SUPER_ADMIN"]
     },
     {
       id: 'payments',
@@ -57,7 +57,16 @@ const dashboard = {
       url: '/payments',
       icon: icons.MoneyCollectOutlined,
       breadcrumbs: false,
-      roles: ["EVENT_PLANNER", "SUPER_ADMIN"]
+      roles: ["ACCOUNTANT", "EVENT_PLANNER", "SUPER_ADMIN"]
+    },
+    {
+      id: 'other-payments',
+      title: 'Other Payments',
+      type: 'item',
+      url: '/other-payments',
+      icon: icons.MoneyCollectOutlined,
+      breadcrumbs: false,
+      roles: ["ACCOUNTANT", "EVENT_PLANNER", "SUPER_ADMIN"]
     },
     {
       id: 'contributions',
@@ -66,7 +75,7 @@ const dashboard = {
       url: '/contributions',
       icon: icons.DollarOutlined,
       breadcrumbs: false,
-      roles: ["EVENT_PLANNER", "SUPER_ADMIN"]
+      roles: ["ACCOUNTANT", "EVENT_PLANNER", "SUPER_ADMIN"]
     },
     {
       id: 'accounting',
@@ -75,7 +84,7 @@ const dashboard = {
       url: '/accounting',
       icon: icons.TableOutlined,
       breadcrumbs: false,
-      roles: ["EVENT_PLANNER", "SUPER_ADMIN"]
+      roles: ["ACCOUNTANT", "EVENT_PLANNER", "SUPER_ADMIN"]
     },
     {
       id: 'users',
@@ -93,7 +102,7 @@ const dashboard = {
       url: '/regions',
       icon: icons.AimOutlined,
       breadcrumbs: false,
-      roles: ["SUPER_ADMIN"]
+      roles: ["ACCOUNTANT", "EVENT_PLANNER", "SUPER_ADMIN"]
     },
     {
       id: 'dekania',
@@ -102,7 +111,7 @@ const dashboard = {
       url: '/dekania',
       icon: icons.HeatMapOutlined,
       breadcrumbs: false,
-      roles: ["SUPER_ADMIN"]
+      roles: ["ACCOUNTANT", "EVENT_PLANNER", "SUPER_ADMIN"]
     },
     {
       id: 'wallet',
@@ -111,7 +120,7 @@ const dashboard = {
       url: '/wallet',
       icon: icons.WalletOutlined,
       breadcrumbs: false,
-      roles: ["EVENT_PLANNER"]
+      roles: [""]
     },
     {
       id: 'profile',
@@ -120,7 +129,7 @@ const dashboard = {
       url: '/profile',
       icon: icons.UserOutlined,
       breadcrumbs: false,
-      roles: ["EVENT_PLANNER", "SUPER_ADMIN"]
+      roles: ["", ""]
     },
   ]
 };

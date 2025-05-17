@@ -61,3 +61,14 @@ export const regionFormFields = [
 export const dekaniaFormFields = [
     { name: "dekania_name", type: "text", label: "Dekania Name", notRequired: false, minimumCharacters: 3 },
 ]
+
+export const otherPaymentsFormFields = [
+    { name: "full_name", type: "text", label: "Full Name", notRequired: false, minimumCharacters: 3 },
+    { name: "phone_number", type: "text", label: "Phone Number", notRequired: false, minimumCharacters: 3 },
+    { name: "age", type: "text", label: "Age", notRequired: false, minimumCharacters: 1 },
+    { name: "distance", type: "text", label: "Distance", notRequired: false, minimumCharacters: 3 },
+    { name: "region_name", type: "text", label: "Region", notRequired: false, minimumCharacters: 3 },
+    { name: "location", type: "text", label: "Dekania", notRequired: false, minimumCharacters: 3 },
+    { name: "t_shirt_size", type: "text", label: "T-Shirt Size", notRequired: false, minimumCharacters: 3 },
+    { name: "amount", type: "number", label: "Amount", notRequired: false, minimumCharacters: 3 },
+]

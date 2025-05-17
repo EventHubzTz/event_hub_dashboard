@@ -188,6 +188,41 @@ export const paymentHeadCells = [
     },
 ]
 
+export const otherPaymentHeadCells = [
+    {
+        id: 'full_name',
+        label: 'Full Name',
+    },
+    {
+        id: 'phone_number',
+        label: 'Phone Number',
+    },
+    {
+        id: 'age',
+        label: 'Age',
+    },
+    {
+        id: 'distance',
+        label: 'Distance',
+    },
+    {
+        id: 'location',
+        label: 'Location',
+    },
+    {
+        id: 't_shirt_size',
+        label: 'T-Shirt Size',
+    },
+    {
+        id: 'amount',
+        label: 'Amount',
+    },
+    {
+        id: 'created_at',
+        label: 'Date',
+    },
+]
+
 export const contributionHeadCells = [
     {
         id: 'full_name',

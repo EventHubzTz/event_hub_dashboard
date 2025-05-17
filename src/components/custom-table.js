@@ -189,7 +189,7 @@ export const CustomTable = (props) => {
                           } else if (column.id === 'location') {
                             return (
                               <TableCell key={index}>
-                                {row.region} {row.location && row.location}
+                                {row?.region || row?.region_name} {row.location && row.location}
                               </TableCell>
                             )
                           } else if (column.id === 'payment_status') {

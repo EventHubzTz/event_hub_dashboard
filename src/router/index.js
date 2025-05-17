@@ -13,6 +13,7 @@ import Regions from "../pages/Regions/Regions";
 import Contributions from "../pages/Contributions/Contributions";
 import Accounting from "../pages/accounting/Accounting";
 import Layout from "../layouts/Layout";
+import OtherPayments from "../pages/OtherPayments/OtherPayments";
 
 export const router = createBrowserRouter([
     {
@@ -31,6 +32,10 @@ export const router = createBrowserRouter([
     {
         path: "payments",
         element: <Layout><Payments /></Layout>,
+    },
+    {
+        path: "other-payments",
+        element: <Layout><OtherPayments /></Layout>,
     },
     {
         path: "contributions",

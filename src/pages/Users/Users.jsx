@@ -24,6 +24,7 @@ import { FormDialog } from "../../components/form-dialog";
 import { userFormFields } from "../../seed/form-fields";
 import { DeleteOutlined, PlusOutlined } from "@ant-design/icons";
 import { MaterialUICustomTabs } from "../../components/MaterialUICustomTabs";
+import { useAuth } from "../../hooks/use-auth";
 
 const useContentsIds = (administrators) => {
     return React.useMemo(() => {
@@ -32,6 +33,7 @@ const useContentsIds = (administrators) => {
 };
 
 function Users() {
+    const auth = useAuth();
     const [currentTab, setCurrentTab] = React.useState(userRoles[0].value);
     const [rowsPerPage, setRowsPerPage] = React.useState(10);
     const [administrators, setAdministrators] = React.useState({
@@ -60,7 +62,7 @@ function Users() {
             phone_no: "",
             gender: "",
             password: "",
-            role: "SUPER_ADMIN",
+            role: currentTab,
         },
     ];
     const [order, setOrder] = React.useState('desc');
@@ -264,20 +266,22 @@ function Users() {
                             <Stack spacing={1}>
                                 <Typography variant="h4">Users</Typography>
                             </Stack>
-                            <div>
-                                <Button
-                                    onClick={handleClickOpenCreateDialog}
-                                    startIcon={
-                                        <PlusOutlined />
-                                    }
-                                    variant="contained"
-                                    sx={{
-                                        color: "neutral.100",
-                                    }}
-                                >
-                                    Add
-                                </Button>
-                            </div>
+                            {auth?.user?.role === userRoles[4].value &&
+                                <div>
+                                    <Button
+                                        onClick={handleClickOpenCreateDialog}
+                                        startIcon={
+                                            <PlusOutlined />
+                                        }
+                                        variant="contained"
+                                        sx={{
+                                            color: "neutral.100",
+                                        }}
+                                    >
+                                        Add
+                                    </Button>
+                                </div>
+                            }
                         </Stack>
                         <MaterialUICustomTabs
                             activeTab={currentTab}

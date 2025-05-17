@@ -1,6 +1,7 @@
 import React from "react";
 import {
     Box,
+    Button,
     Container,
     Stack,
     Typography,
@@ -13,7 +14,13 @@ import { authGetRequest } from "../../services/api-service";
 import { getAllAccountingTransactionsUrl } from "../../seed/url";
 import { utils, writeFile } from "xlsx";
 import dayjs from "dayjs";
+import { MaterialUICustomTabs } from "../../components/MaterialUICustomTabs";
+import { PlusOutlined } from "@ant-design/icons";
 
+const TABS = [
+    { label: "Accounting", value: "Accounting" },
+    { label: "Payment Requests", value: "Payment Requests" }
+];
 const usePaymentsIds = (payments) => {
     return React.useMemo(() => {
         return payments.map((customer) => customer.id);
@@ -48,6 +55,7 @@ export const handleExport = (data) => {
 };
 
 function Accounting() {
+    const [currentTab, setCurrentTab] = React.useState(TABS[0].value);
     const [exportExcel, setExportExcel] = React.useState(false);
     const [rowsPerPage, setRowsPerPage] = React.useState(10);
     const [payments, setPayments] = React.useState([]);
@@ -143,7 +151,25 @@ function Accounting() {
                             <Stack spacing={1}>
                                 <Typography variant="h4">Accounting</Typography>
                             </Stack>
+                            <div>
+                                <Button
+                                    startIcon={
+                                        <PlusOutlined />
+                                    }
+                                    variant="contained"
+                                    sx={{
+                                        color: "neutral.100",
+                                    }}
+                                >
+                                    Request Payment
+                                </Button>
+                            </div>
                         </Stack>
+                        <MaterialUICustomTabs
+                            activeTab={currentTab}
+                            setActiveTab={setCurrentTab}
+                            tabsData={TABS}
+                        />
                         <CustomSearch
                             handleSearch={handleSearch}
                             exportExcel={exportExcel}
