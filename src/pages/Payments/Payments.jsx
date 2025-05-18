@@ -30,7 +30,7 @@ export const handleExport = (data) => {
                 "Event Name": row?.event_name,
                 "Full Name": row?.full_name,
                 "Payment Number": row?.phone_number,
-                "Age": row?.age,
+                "Age": row?.date_of_birth,
                 "Distance": row?.distance,
                 "Location": `${row?.region} ${row?.location}`,
                 "T Shirt Size": row?.t_shirt_size,
