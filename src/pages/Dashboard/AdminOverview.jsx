@@ -130,13 +130,13 @@ function AdminOverview() {
                         <AnalyticEcommerce title="Total Sales" count={formatMoney(dashboardData.total_amount)} percentage={100} />
                     </Grid>
                     <Grid item xs={12} sm={6} md={4} lg={3}>
-                        <AnalyticEcommerce title="Agregator Collection" count={formatMoney(dashboardData.agregator_collection)} percentage={3.5} />
+                        <AnalyticEcommerce title="Agregator Collection" count={formatMoney(dashboardData.agregator_collection)} percentage={3.54} />
                     </Grid>
                     {/* <Grid item xs={12} sm={6} md={4} lg={3}>
                         <AnalyticEcommerce title="System Collection" count={formatMoney(dashboardData.system_collection)} percentage={3} />
                     </Grid> */}
                     <Grid item xs={12} sm={6} md={4} lg={3}>
-                        <AnalyticEcommerce title="Remained Collection" count={formatMoney(dashboardData.remained_collection)} percentage={96.5} />
+                        <AnalyticEcommerce title="Remained Collection" count={formatMoney(dashboardData.remained_collection)} percentage={96.46} />
                     </Grid>
                 </>
             }
